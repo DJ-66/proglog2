@@ -69,7 +69,7 @@ func testReadAt(t *testing.T, s *store) {
 
 	}
 }
-func TestStoreClos(t *testing.T) {
+func TestStoreClose(t *testing.T) {
 	f, err := ioutil.TempFile("", "store_close_test")
 	require.NoError(t, err)
 	defer os.Remove(f.Name())

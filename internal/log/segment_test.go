@@ -17,7 +17,7 @@ func TestSegment(t *testing.T) {
 	want := &api.Record{Value: []byte("hello world")}
 
 	c := Config{}
-	c.Segment.maxStoreBytes = 1024
+	c.Segment.MaxStoreBytes = 1024
 	c.Segment.MaxIndexBytes = entWidth *3
 
 	s, err := newSegment(dir, 16, c)
@@ -40,7 +40,7 @@ func TestSegment(t *testing.T) {
 	// Maxed index
 	require.True(t, s.IsMaxed())
 
-	s.Segment.maxStoreBytes = uint64(len(want.Value) * 3)
+	c.Segment.MaxStoreBytes = uint64(len(want.Value) * 3)
 	c.Segment.MaxIndexBytes = 1024
 
 	s, err = newSegment(dir, 16, c)
